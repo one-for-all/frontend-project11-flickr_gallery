@@ -19,7 +19,7 @@ class PhotoContainer extends Component {
 
   // function to search Flickr images and set state for rerendering
   updatePhotos = (searchTerm) => {
-    if (searchTerm !== '') {
+    if (searchTerm !== null && searchTerm !== '') {
       const url = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${searchTerm}&per_page=16&format=json&nojsoncallback=1`
       axios.get(url).then(response => {
         let photos = []
@@ -39,7 +39,7 @@ class PhotoContainer extends Component {
   componentWillMount() {
     const searchTerm = this.props.location.pathname.slice(1, -1)
     if (searchTerm === 'frontend-project11-flickr_gallery') {
-      searchTerm == null
+      searchTerm = null
     }
     this.updatePhotos(searchTerm)
   }
@@ -48,7 +48,7 @@ class PhotoContainer extends Component {
   componentWillReceiveProps(nextProps) {
     const searchTerm = nextProps.location.pathname.slice(1, -1)
     if (searchTerm === 'frontend-project11-flickr_gallery') {
-      searchTerm == null
+      searchTerm = null
     }
     this.updatePhotos(searchTerm)
   }
