@@ -37,7 +37,7 @@ class PhotoContainer extends Component {
 
   // update state on first mount
   componentWillMount() {
-    const searchTerm = this.props.location.pathname.slice(1, -1)
+    let searchTerm = this.props.location.pathname.slice(1, -1)
     if (searchTerm === 'frontend-project11-flickr_gallery') {
       searchTerm = null
     }
@@ -46,7 +46,7 @@ class PhotoContainer extends Component {
 
   // update state on receiving new location
   componentWillReceiveProps(nextProps) {
-    const searchTerm = nextProps.location.pathname.slice(1, -1)
+    let searchTerm = nextProps.location.pathname.slice(1, -1)
     if (searchTerm === 'frontend-project11-flickr_gallery') {
       searchTerm = null
     }
